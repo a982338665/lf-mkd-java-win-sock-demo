@@ -199,3 +199,46 @@
     BIO 阻塞   同步 简单 客户机/服务器线程对比1:1    性能低     服务端N的线程1v1处理
     NIO 非阻塞 同步 困难 客户机/服务器线程对比N:1    性能高     服务端一个线程轮询处理
     AIO 非阻塞 异步 困难 客户机/服务器线程对比N:1    性能高     服务端一个线程回调异步通知
+
+**8.netty：推荐书【netty权威指南】**
+    
+    1.Netty：http://netty.io
+    2.最早由韩国Trustin Lee设计开发的
+    3.后来由jboss接收开发，现在是独立的Netty Project
+    4.一个非阻塞的客户端-服务端网络通讯框架
+    5.基于异步事件驱动模型
+    6.简化java的TCP、UDP编程
+    7.支持http/2,ssl等多种协议
+    8.支持多种数据格式，如json等
+    9.关键技术：
+        -通道Channel
+            ·ServerSocketChannel/NioServerSocketChannel/...
+            ·SocketChannel/NioSocketChannel
+        -事件Eventloop
+            ·为每一个通道定义一个EventLoop，处理所有的io事件
+            ·注册事件
+            ·将事件派发非ChannelHandler
+            ·安排进一步操作
+        -事件
+            ·事件按照数据流向进行分类
+            ·入站事件：连接激活，数据读取。。
+            ·出站事件：打开远程连接，写数据。。
+        -事件处理:
+            ·Channel通道发生数据或状态改变
+            ·EventLoop会将事件分类，并调用channelHandler的回调函数
+            · 程序员需要实现ChannelHandler内的回调函数
+            ·ChannelboundHandler、ChannelOutboundHandler、
+        -ChannelHandler工作模式：责任链模式 --> 23中基本设计模式之一
+            -将请求的接收者连成一条链
+            -在链上传递请求，直到有一个接收者处理该请求
+            -避免请求者与接收者的耦合
+            ·ChannelHandler可以有多个，依次进行调用
+            ·ChannelPipline作为容器，承载多个Channelhandler
+        -ByteBuf
+            -强大的字节容器，提供丰富的api进行操作
+    
+ **9.Mina**
+    
+    ·Apache Mina，最初的设计者跟netty是同一个人 http://mina.apache.org
+    ·NIO框架库
+    ·事件驱动的异步网络通讯
