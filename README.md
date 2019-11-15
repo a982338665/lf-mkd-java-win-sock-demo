@@ -172,3 +172,24 @@
                     ·OP_ACCEPT
                     ·OP_READ
                     ·OP_WRITE
+
+**6.AIO；**
+    
+    BIO 阻塞io        一个线程管理一个连接，当有几亿数据访问时，不可能开启几亿条线程，一个机器顶多承受几百个线程
+    NIO 非阻塞IO      一个线程管理多个连接，减少了线程多的压力
+        NIO并不是一个异步的通讯模式，他是一个同步的通讯模式
+        假设：点单
+            同步阻塞：下单，等饭，直到做好，交接               BIO
+            同步非阻塞：下单，不等待，定时轮询，等好了，交接    NIO 
+            异步非阻塞：下单，不等待，不轮询，好了，送家里      AIO
+        并发编程的同步：指多个线程需要以一种同步的方式来访问某一个数据结构，这里的同步反义词是非同步的，即线程不安全
+        网络通讯的同步：指客户端与服务端直接的通讯等待方式，这里反义词是异步，无需等待另一端操作完成
+    AIO Asynchronous I/O，异步I/O --> 通过回调函数通知
+        jdk1.7引入，主要在java.nio包中
+        异步i/o，采用回调方法进行处理读写操作
+        主要类：
+            -AsynchronousServerSocketChannel服务器接受请求通道：bind绑定在某一个端口 accept接收客户端请求
+            -AsynconouSocketChannel Socket通讯通道 read读数据 write写数据
+            -CompletionHandler异步处理类：
+                ·completed操作完成后异步调用方法 
+                ·failed操作失败后异步调用方法
