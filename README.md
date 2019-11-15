@@ -137,4 +137,38 @@
         各类web监控
         web测试
         
-               
+**5.nio：**
+
+    1.传统的tcp和udp都是BIO：blocking i/o（阻塞io）
+    2.NIO：Non-Blocking I/O 非阻塞io 也称new IO
+        -提供非阻塞通讯等方式
+        -避免同步io通讯效率过低
+        -一个线程可以同时管理多个连接
+        -减少线程多的压力
+    3.jdk1.4引入，1.7升级nio2.0（包括AIO）
+        -java.nio包
+        -主要类：
+            Buffer缓存区：
+                -Buffer缓冲区，一个可以读写的内存区域
+                            -ByteBuffer,CharBUffer,DoubleBuffer,IntBuffer,LongBuffer,SHortBuffer(StringBuffer不是Buffer缓存区)
+                -四个主要属性：
+                            -capacity容量，position读写位置
+                            -limit接线，mark标记，用于重复一个读写操作
+            Channel通道：
+                -全双工的，支持读写（Stream流是单向的）
+                -支持异步读写
+                -和Buffer配合，提高效率
+                -ServerSocketChannel服务器TCP socket介入通道，接收客户端
+                -SokcetChannel TCP Socket通道，可支持阻塞/非阻塞通讯
+                -DatagramChannel UDP通道
+                -FileChannel文件通道
+            Selector多路选择器              
+                -每隔一段时间不断轮训注册在其上的Channel
+                -如果有一个Channel有接入读写操作，就会被轮询出来
+                -根据SelectionKey可以获取相应的Channel，进行后续IO操作
+                -避免过多的线程
+                -SelectionKey四种类型：
+                    ·OP_CONNECT
+                    ·OP_ACCEPT
+                    ·OP_READ
+                    ·OP_WRITE
