@@ -86,4 +86,50 @@
             -服务端先启动，且一直保留
             -客户端后启动，可以先退出
 
+**4.http编程：**
     
+    1.网页访问：
+        -网页时特殊的网络服务（http，Hypertext Transfer Protocol）
+            -在浏览器输入url地址
+            -浏览器将连接到远程服务器上（ip+80port）
+            -请求下载html，放在本地临时文件
+            -浏览器展示
+    2.http简介：--》 html获取到的永远都是html流
+        -超文本传输协议Hypertext Transfer Protocol
+        -用于从www服务器传输超文本到本地浏览器的传输协议
+        -资源文件采用html编写，以url形式对外提供
+    3.html：超文本标记语言
+    4.访问方式：
+        get：获取资源
+        post：提交数据
+        put：上传文件
+        delete：删除文件
+        head：保文头部
+        options：询问支持的方法
+        trace：追踪路径
+        connect：用隧道协议连接代理
+    5.http编程：
+        java.net包
+        URL
+        URLConnection
+    6.HttpClient:两个包
+        -jdk自带的：从java9开始有
+            -jdk9新增，10更新，jdk11正式发布
+            -java.net.http包
+            -取代URLConnection
+            -支持http/1.1，http/2
+            -实现大部分http方法
+            -主要类：
+                HttpClient
+                HttpRequest
+                HttpResponse
+        -Apache HttpComponents的HttpClient
+            -hc.apache.org,Apache出品
+            -从HttpClient进化而来
+            -是一个集成的java Http工具包
+                -实现所有的http方法
+                -支持自动转向
+                -只会https协议
+                -支持代理服务器等
+        
+               
