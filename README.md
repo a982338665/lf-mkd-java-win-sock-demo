@@ -242,3 +242,43 @@
     ·Apache Mina，最初的设计者跟netty是同一个人 http://mina.apache.org
     ·NIO框架库
     ·事件驱动的异步网络通讯
+
+**10.邮件基础知识：**
+
+    ·邮件客户端
+        -FOxmail
+        -OutLook
+        -Thunderbird（linux平台）
+    ·邮件服务端
+        -Microsoft Exchange Server
+        -IBM Lotus Notes
+        -SendMail.Qmail,James(纯java实现)
+    1.主要协议：发送端口25，接收端口110
+        -发送，smtp，simple Mail Transfer Protocol  简单邮件传输协议
+        -接收：Pop3，Post Office Protocol3
+        -接收，IMAP，Internet Message Access Protocol，IMAP4
+            ·摘要浏览
+            ·选择下载附件
+            ·多文件夹
+            ·网络硬盘
+    2.邮件格式：
+        -RFC822有间隔是：右箭头，文字邮件正文
+        -MIME（MultiPurpose Internet Mail Extension）图片，音频，视频等等
+    3.邮件编码
+        -纯英文邮件，ASCII编码7Bit
+        -8Bit编码
+        -BASE64，6个bit...
+    4.邮件中继：通过别人的邮件服务器（中继服务器）讲你的邮件系统的邮件送到目标地址
+    5.垃圾邮件Spam
+    6.邮件和邮件服务器安全
+    7.邮件防火墙，垃圾邮件判定
+    8.javax.mail包和javax.mail.internet包：
+        -https://javaee.hithub.io/javamail
+        -mvn dependency
+    9.关键类：
+        -Session    邮件会话和HttpSession不同
+        -Store      邮件存储空间
+        -Folder     邮件文件夹
+        -Message    电子邮件
+        -Address    邮件地址
+        -Transport  发送协议类
