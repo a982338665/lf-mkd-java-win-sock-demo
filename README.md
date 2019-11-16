@@ -283,3 +283,22 @@
         -Address    邮件地址
         -Transport  发送协议类
 
+**11.数据库连接：JDBC**
+    
+    1.sql注入防护：使用?占位符，防止恶意注入，最好不使用字符串拼接方式 WinSockDemo\src\main\java\pers\li\sock\jdbc\middle
+        -?占位，会将所有参数作为内容执行，不会被注入
+        -拼接，没有上异步处理，会有sql注入风险
+    2.使用PreparedStatement的好处：
+        -防止注入攻击
+        -防止繁琐的字符串拼接和错误
+        -直接设置对象而不需要转换为字符串
+        -PreparedStatement使用预编译速度相对Statement快很多
+    3.ResultSetMetaData：
+        -ResultSet可以用来承载所有的select语句返回的结果集
+        -ResultSetMetaData来获取ResultSet返回的属性（如每一行的名字类型等）
+            -getColumnCount() 返回结果的列数
+            -getColumeClassName(i) 返回第i列的数据的java类名
+            -getColumeTypeName(i) 返回第i列的数据库类型名称
+            -getColumnType(i)   返回第i列的sql类型
+        -使用ResultSetMetaData解析ResultSet
+    4.
