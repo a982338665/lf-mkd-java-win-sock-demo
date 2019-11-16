@@ -301,4 +301,47 @@
             -getColumeTypeName(i) 返回第i列的数据库类型名称
             -getColumnType(i)   返回第i列的sql类型
         -使用ResultSetMetaData解析ResultSet
-    4.
+    4.数据库连接池-> 享元模式，共享连接
+
+**12.java混合编程：WinSockDemo\src\main\java\pers\li\sock\other**
+
+    1.程序语言全球排行查看：https://www.tiobe.com/tiobe-index/
+    2.java混合编程：java与js，c，python，web service，命令行的混合编程
+    3.RMI:一个jvm上的class可以实现调用另一个jvm上的class
+        1.单虚拟机jvm上的程序运行：
+            -启动一个main程序，然后重复以下两个步骤
+                ·new对象
+                ·调用方法
+        2.多虚拟机jvm上的程序运行
+            -启动多个main程序，这些程序可以部署在多个机器或虚拟机上
+            -多个进程可通过网络互相传递消息进行协作
+            -进程通过RMI可调用另一个机器上的java函数
+        3.RMI：Remote Method invocation远程方法调用
+            -两个位于不同JVM虚拟机的java程序互相请求访问    
+        4.RMI注册表
+        5.RMI的参数和返回值：两种方式
+            -1.（自动化）传递远程对象（实现Remote接口）
+                ·当一个对远程对象的引用从一个JVM传递到另一个JVM，该远程对象的发送者和接收者将持有同一个实体对象的引用，
+                这个引用并非是一个内存位置，而是由网络地址和该远程对象的唯一标识符构成的
+                【两个JVM拥有同一个对象】
+            -2.（自动化）传递可序列化对象（实现Serializable接口）
+                ·jvm中的一个对象经过序列化后的字节，通过网络，其副本传递到另一个jvm中，并重新还原为一个java对象
+                【每个jvm都拥有自己的对象】
+            -------------------------------
+            Serializable    支持对象序列化
+            Comparable      支持对象比较
+            Runnable        支持对象线程化
+            Cloneable       支持对象克隆
+        6.RMI实现跨JVM的调用：
+            优点：
+                -跨平台分布式对象调用
+                -完全对象支持
+                -安全策略
+            缺点：
+                -双方必须是java语言
+                -不如消息传递协作方便
+                -耦合度高，网络编程则是松耦合
+    4.JNI：java和c互操作 Java Native Interface
+        ·java调用c程序完成一些需要快速计算的功能（常见，重点）
+        ·c调用java程序（基于反射的方法）
+        
